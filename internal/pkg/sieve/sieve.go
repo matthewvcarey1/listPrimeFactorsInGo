@@ -1,5 +1,7 @@
 package sieve
 
+// From https://siongui.github.io/2017/04/17/go-sieve-of-eratosthenes/
+
 func SieveOfEratosthenes(n int) []int {
 	// Create a boolean array "prime[0..n]" and initialize
 	// all entries it as true. A value in prime[i] will

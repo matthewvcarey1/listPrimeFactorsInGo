@@ -19,7 +19,7 @@ func main() {
 	t1 := time.Now()
 	defer func() {
 		taken := time.Now().Sub(t1)
-		fmt.Println("Time taken", taken)
+		fmt.Println("\nTime taken", taken)
 	}()
 	num := 100
 	if len(os.Args) > 1 {
@@ -35,13 +35,13 @@ func main() {
 	sort.Ints(factors)
 	nps := makeListOfBaseExponents(factors)
 
-	var outStr: string
-	for i, np in range nps {
+	var outStr string
+	for i, np := range nps {
 		if i > 0 {
 			outStr = outStr + " \u00D7 "
 		}
-		outStr = outStr + np.base
-		if(np.exponent > 1){
+		outStr = outStr + strconv.Itoa(np.base)
+		if np.exponent > 1 {
 			outStr = outStr + numToSuperscript(np.exponent)
 		}
 	}
@@ -96,6 +96,7 @@ func numToSuperscript(num int) string {
 		val := num % 10
 		s := superscriptDigits[val]
 		supers = s + supers
+		num = num / 10
 	}
 	return supers
 }
