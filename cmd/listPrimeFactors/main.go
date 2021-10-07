@@ -33,18 +33,9 @@ func main() {
 	var factors []int
 	factors = listPrimeFactors(num, primes, factors)
 	sort.Ints(factors)
-	nps := makeListOfBaseExponents(factors)
+	lbe := makeListOfBaseExponents(factors)
+	outStr := generateIndexFormatString(lbe)
 
-	var outStr string
-	for i, np := range nps {
-		if i > 0 {
-			outStr = outStr + " \u00D7 "
-		}
-		outStr = outStr + strconv.Itoa(np.base)
-		if np.exponent > 1 {
-			outStr = outStr + numToSuperscript(np.exponent)
-		}
-	}
 	fmt.Printf(outStr)
 
 }
@@ -99,4 +90,18 @@ func numToSuperscript(num int) string {
 		num = num / 10
 	}
 	return supers
+}
+
+func generateIndexFormatString(lbe []baseExponent) string {
+	var outStr string
+	for i, be := range lbe {
+		if i > 0 {
+			outStr = outStr + " \u00D7 "
+		}
+		outStr = outStr + strconv.Itoa(be.base)
+		if be.exponent > 1 {
+			outStr = outStr + numToSuperscript(be.exponent)
+		}
+	}
+	return outStr
 }
