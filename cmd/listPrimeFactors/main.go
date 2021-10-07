@@ -19,7 +19,7 @@ func main() {
 	t1 := time.Now()
 	defer func() {
 		taken := time.Now().Sub(t1)
-		fmt.Println("\nTime taken", taken)
+		fmt.Println("\n\nTime taken", taken)
 	}()
 	num := 100
 	if len(os.Args) > 1 {
@@ -57,8 +57,8 @@ func makeListOfBaseExponents(nums []int) []baseExponent {
 	var np []baseExponent
 	lastNum := -1
 	npIndex := -1
-	for _, n := range nums {
-		if len(nums) > 0 && n == lastNum {
+	for i, n := range nums {
+		if i > 0 && n == lastNum {
 			np[npIndex].exponent++
 		} else {
 			npIndex++
