@@ -54,19 +54,19 @@ func listPrimeFactors(num int, primes []int, res []int) []int {
 }
 
 func makeListOfBaseExponents(nums []int) []baseExponent {
-	var np []baseExponent
+	var lbe []baseExponent
 	lastNum := -1
-	npIndex := -1
+	lbeIndex := -1
 	for i, n := range nums {
 		if i > 0 && n == lastNum {
-			np[npIndex].exponent++
+			lbe[lbeIndex].exponent++
 		} else {
-			npIndex++
-			np = append(np, baseExponent{base: n, exponent: 1})
+			lbeIndex++
+			lbe = append(lbe, baseExponent{base: n, exponent: 1})
 			lastNum = n
 		}
 	}
-	return np
+	return lbe
 }
 
 func numToSuperscript(num int) string {
