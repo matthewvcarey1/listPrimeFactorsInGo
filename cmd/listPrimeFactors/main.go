@@ -32,7 +32,6 @@ func main() {
 	primes := sieve.SieveOfEratosthenes(num / 2)
 	var factors []int
 	factors = listPrimeFactors(num, primes, factors)
-	sort.Ints(factors)
 	lbe := makeListOfBaseExponents(factors)
 	outStr := generateIndexFormatString(lbe)
 
@@ -54,6 +53,7 @@ func listPrimeFactors(num int, primes []int, res []int) []int {
 }
 
 func makeListOfBaseExponents(nums []int) []baseExponent {
+	sort.Ints(nums)
 	var lbe []baseExponent
 	lastNum := -1
 	lbeIndex := -1
